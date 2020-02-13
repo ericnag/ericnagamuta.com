@@ -22,7 +22,6 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   }
 }
 
-// To create the posts pages
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
   return graphql(`
@@ -39,11 +38,6 @@ exports.createPages = ({ graphql, actions }) => {
               date(locale: "pt-br", formatString: "DD [de] MMMM [de] YYYY")
               description
               title
-            }
-            wordCount {
-              paragraphs
-              sentences
-              words
             }
             timeToRead
           }
@@ -65,7 +59,7 @@ exports.createPages = ({ graphql, actions }) => {
       })
     })
 
-    const postsPerPage = 2
+    const postsPerPage = 4
     const numPages = Math.ceil(posts.length / postsPerPage)
 
     Array.from({ length: numPages }).forEach((_, index) => {
@@ -76,8 +70,8 @@ exports.createPages = ({ graphql, actions }) => {
           limit: postsPerPage,
           skip: index * postsPerPage,
           numPages,
-          currentPage: index + 1
-        }
+          currentPage: index + 1,
+        },
       })
     })
   })
