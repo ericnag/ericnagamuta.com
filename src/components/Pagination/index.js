@@ -19,8 +19,8 @@ Pagination.prototype = {
   isLast: propTypes.bool.isRequired,
   currentPage: propTypes.number.isRequired,
   numPages: propTypes.number.isRequired,
-  numPages: propTypes.string,
-  numPages: propTypes.string
+  prevPage: propTypes.string,
+  nextPage: propTypes.string
 }
 
 export default Pagination
