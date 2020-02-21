@@ -1,3 +1,5 @@
+require("dotenv").config()
+
 const postsQuery = `{
     posts: allMarkdownRemark(
         sort: { fields: frontmatter___date, order: DESC }
