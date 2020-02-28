@@ -1,34 +1,61 @@
 import React from "react"
 
-import algoliasearch from "algoliasearch/lite"
-import { InstantSearch, SearchBox, Hits, Stats } from "react-instantsearch-dom"
-
-import Hit from './Hit'
-
 import * as S from "./styled"
 
-const algolia = {
-  appId: process.env.GATSBY_ALGOLIA_APP_ID,
-  searchOnlyApiKey: process.env.GATSBY_ALGOLIA_SEARCH_KEY,
-  indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
-}
+import Layout from "../../components/Layout"
+import SEO from "../../components/seo"
+import PostItem from "../../components/PostItem"
+import Pagination from "../../components/Pagination"
 
-const searchClient = algoliasearch(algolia.appId, algolia.searchOnlyApiKey)
+const Search = props => {
+  
+  const postList = props.data.allMarkdownRemark.edges
 
-const Search = () => (
-  <S.SearchWrapper>
-    <InstantSearch searchClient={searchClient} indexName={algolia.indexName}>
-      <SearchBox autoFocus translations={{ placeholder: "Pesquisar..." }} />
-      <Stats
-        translations={{
-          stats(nbHits, timeSpentMs) {
-            return `${nbHits} resultados encontrados em ${timeSpentMs}ms`
-          },
-        }}
+  const { currentPage, numPages } = props.pageContext
+  const isFirst = currentPage === 1
+  const isLast = currentPage === numPages
+  const prevPage = currentPage - 1 === 1 ? "/" : `/page/${currentPage - 1}`
+  const nextPage = `/page/${currentPage + 1}`
+
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <S.ListWrapper>
+      <input
+        type="text"
+        placeholder="Search"
       />
-      <Hits hitComponent={Hit}/>
-    </InstantSearch>
-  </S.SearchWrapper>
-)
+        {postList.map(
+          ({
+            node: {
+              frontmatter: { background, category, date, description, title },
+              timeToRead,
+              fields: { slug },
+            },
+          }) => (
+            <PostItem
+              slug={slug}
+              background={background}
+              category={category}
+              date={date}
+              timeToRead={timeToRead}
+              title={title}
+              description={description}
+            />
+          )
+        )}
+      </S.ListWrapper>
+
+      <Pagination
+        isFirst={isFirst}
+        isLast={isLast}
+        currentPage={currentPage}
+        numPages={numPages}
+        prevPage={prevPage}
+        nextPage={nextPage}
+      />
+    </Layout>
+  )
+}
 
 export default Search

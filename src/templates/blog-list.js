@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useReducer, useEffect } from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/Layout"
@@ -6,10 +6,21 @@ import SEO from "../components/seo"
 import PostItem from "../components/PostItem"
 import Pagination from "../components/Pagination"
 
+import { postsQuery } from "../utils/post_list_query"
+
+import { postsReducer } from "../redux/reducer"
+import { SET_POSTS } from "../redux/actions"
+
 import * as S from "../components/ListWrapper/styled"
 
 const BlogList = props => {
-  const postList = props.data.allMarkdownRemark.edges
+  //const [posts, dispatch] = useReducer(postsReducer, [])
+
+  const posts = props.data.allMarkdownRemark.edges;
+  // useEffect(() => {
+  //   console.log('PROPS: ', props)
+  //   //dispatch({ type: SET_POSTS, payload: props.data.allMarkdownRemark.edges })
+  // }, [props])
 
   const { currentPage, numPages } = props.pageContext
   const isFirst = currentPage === 1
@@ -21,7 +32,7 @@ const BlogList = props => {
     <Layout>
       <SEO title="Home" />
       <S.ListWrapper>
-        {postList.map(
+        {posts.map(
           ({
             node: {
               frontmatter: { background, category, date, description, title },
@@ -54,30 +65,6 @@ const BlogList = props => {
   )
 }
 
-export const query = graphql`
-  query PostList($skip: Int!, $limit: Int!) {
-    allMarkdownRemark(
-      sort: { fields: frontmatter___date, order: DESC }
-      limit: $limit
-      skip: $skip
-    ) {
-      edges {
-        node {
-          fields {
-            slug
-          }
-          frontmatter {
-            background
-            category
-            date(locale: "pt-br", formatString: "DD [de] MMMM [de] YYYY")
-            description
-            title
-          }
-          timeToRead
-        }
-      }
-    }
-  }
-`
+export const query = postsQuery
 
 export default BlogList
