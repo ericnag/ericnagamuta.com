@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import media from "styled-media-query"
+import media from 'styled-media-query'
 
 export const SearchWrapper = styled.section`
   background: var(--background);
@@ -7,62 +7,79 @@ export const SearchWrapper = styled.section`
   flex-direction: column;
   width: 100%;
   transition: opacity 0.4s;
-  .ais-InstantSearch__root {
+
+    ${media.lessThan("large")`
+        padding-bottom: 3.5rem;
+    `}
+`
+
+export const SearchBox = styled.div`
     display: flex;
     flex-direction: column;
     height: auto;
     width: 100%;
-  }
-  .ais-SearchBox,
-  .ais-Stats {
-    padding: 0.5rem 3rem;
+    padding: 6rem 3rem 0.5rem 3rem;
 
     ${media.lessThan("large")`
-      padding: 0.5rem 1rem;
+        padding: 1rem 1.0rem;
     `}
-  }
-  .ais-SearchBox {
-    padding-top: 6rem;
-
-    ${media.lessThan("large")`
-      padding-top: 1rem;
-    `}
-  }
-  .ais-Stats {
-    color: var(--texts);
-  }
-
-  body#grid & {
-    .ais-Hits-list {
-      background-color: var(--borders);
-      border-bottom: 1px solid var(--borders);
-      border-top: 1px solid var(--borders);
-      display: grid;
-      grid-area: card;
-      grid-gap: 1px;
-      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-      margin-top: 2rem;
-    }
-    .ais-Hits-item {
-      background-color: var(--background);
-    }
-  }
-
-  .ais-SearchBox-input {
-    background: none;
-    border: none;
-    border-bottom: 1px solid var(--borders);
+`
+export const SearchInput = styled.div`
     color: var(--texts);
     display: flex;
-    font-size: 1.6rem;
     padding: 0.5rem;
     width: 100%;
-    &::placeholder {
-      color: var(--texts);
+    & input {
+        color: var(--texts);
+        background: none;
+        border: none;
+        border-bottom: 1px solid var(--borders);
+        display: flex;
+        font-size: 1.6rem;
+        padding: 0.5rem;
+        width: 100%;
+        &::placeholder {
+            color: var(--texts);
+        }
     }
+    & span {
+        color: var(--texts);
+        cursor: pointer;
+        height: 3.75rem;
+        padding: 0.6rem 3.8rem;
+        position: absolute;
+        right: 5.5rem;
+        width: 3.75rem;
+
+        ${media.lessThan("large")`
+            right: 0;
+        `}
+
+        & svg {
+            width: 1.8rem;
+            height: 1.8rem;
+        }
+        &:hover {
+            color: var(--highlight);
+        }
+    }
+`
+
+export const ClearIcon = styled.span`
+  cursor: pointer;
+  display: block;
+  height: 3.75rem;
+  padding: 1.1rem;
+  position: absolute;
+  right: 84px;
+  width: 3.75rem;
+  color:var(--borders);
+  &:hover {
+    color: var(--highlight);
   }
-  .ais-SearchBox-submit,
-  .ais-SearchBox-reset {
-    display: none;
-  }
+`
+
+export const Stats = styled.div`
+    padding: 0.5rem;
+    color: var(--texts);
 `
