@@ -7,7 +7,7 @@ import Search from "../components/Search"
 const SearchPage = props => (
   <Layout>
     <SEO title="Search" />
-    <Search posts={props} />
+    <Search props={props} />
   </Layout>
 )
 
