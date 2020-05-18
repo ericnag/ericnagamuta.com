@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const Container = styled.div`
     max-width: 700px;
     padding: 30px;
-    margin: 80px auto;
+    margin: 0 auto;
 
     h1 {
         font-size: 40px;
@@ -19,4 +19,9 @@ export const Container = styled.div`
         margin-bottom: 20px;
         color: var(--aboutColor);
     }
+`
+
+export const Language = styled.div`
+    display: flex;
+    justify-content: flex-end
 `
