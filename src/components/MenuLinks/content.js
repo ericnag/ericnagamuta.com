@@ -1,6 +1,6 @@
 const links = [
   {
-    label: "Home",
+    label: "Posts",
     url: "/",
   },
   {
