@@ -2,7 +2,7 @@ backend:
   name: github
   repo: ericnag/ericnagamuta.com
   branch: master
-  site_domain: https://eric-nagamuta-blog.netlify.com/
+  site_domain: eric-nagamuta-blog.netlify.com
 
 publish_mode: editorial_workflow
 media_folder: "static/assets/img"
@@ -23,7 +23,7 @@ collections:
           widget: "datetime",
           format: "YYYY-MM-DD hh:mm:ss",
         }
-      - { label: "image", name: "thumbnail", widget: "image" }
+      - { label: "image", name: "image", widget: "image" }
       - {
         label: "Category",
         name: "category",
