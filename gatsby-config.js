@@ -4,7 +4,7 @@ module.exports = {
   siteMetadata: {
     title: `Eric Nagamuta`,
     position: `Full Stack Developer`,
-    description: `Aqui compartilho um pouco das minhas experiências como desenvolvedor`,
+    description: `Este blog é sobre minhas experiências como desenvolvedor, mas sinta-se a vontade para comentar nos posts(rodapé) ou até mesmo me chamar nas redes sociais para bater um papo de dev pra dev 😀`,
     author: `@eric`,
     siteUrl: `https://eric-nagamuta-blog.netlify.com`
   },
