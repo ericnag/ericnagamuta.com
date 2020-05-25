@@ -1,8 +1,8 @@
 ---
 title: Implementando internacionalização(i18n) com Gatsby.js
 description: >-
-  Nesse post explico como implementei a internacionalização(i18n) no meu blog
-  desenvolvido com Gatsby.js.
+  Nesse post explico como implementei a internacionalização(i18n) na tela "Sobre
+  mim" deste blog
 date: '2020-05-24 08:20:00'
 image: assets/img/internacionalizacao.png
 category: js
