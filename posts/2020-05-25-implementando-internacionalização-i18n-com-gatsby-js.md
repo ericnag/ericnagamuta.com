@@ -50,7 +50,7 @@ project
 
 No arquivo `config.js`, configurei para ter os idiomas português(pt) e inglês(en) :
 
-```react
+```jsx
 import i18next from 'i18next';
 
 i18next.init({
@@ -88,7 +88,7 @@ Estou colocando os textos de um certo idioma apenas no arquivo *translations.jso
 
 Este componente é implementado no arquivo `withTrans.js`:
 
-```react
+```jsx
 import React, { Component } from 'react';
 import i18next from './config';
 import { I18nextProvider, withTranslation } from 'react-i18next';
@@ -118,7 +118,7 @@ A função `withTranslation()` fornecida pelo react-18next passa via *props* a f
 
 Vamos importar o componente *wrapper* que criamos, dentro do component About:
 
-```react
+```jsx
 import React from "react"
 import LanguageMenu from "../components/LanguageMenu"
 import { withTrans } from "../i18n/withTrans"
@@ -185,7 +185,7 @@ $ yarn add @material-ui/core
 
 Chamei o *dropdown* de `LanguageMenu`, ficará da seguinte forma:
 
-```react
+```jsx
 import React, { useState } from "react"
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
