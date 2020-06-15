@@ -6,13 +6,9 @@ image: assets/img/reactotron.png
 category: js
 background: '#D6BA32'
 ---
-![Reactotron](https://raw.githubusercontent.com/infinitered/reactotron/master/docs/images/readme/Reactotron-128.png)
-
 [Reactotron](https://github.com/infinitered/reactotron) é um inspecionador desktop para aplicações ReactJS e React Native. Com Reactotron fica muito mais fácil monitorar logs de console, requisições à API, ações no Redux e Redux Saga, pois às vezes o fluxo acabado ficando bem complexo de entender. É possível instalar o programa em todas plataformas(Linux, macOS, Windows) através deste [link](https://github.com/infinitered/reactotron/releases).
 
 Eu particularmente gosto muito de utilizá-lo no React Native, pois realizar a inspeção pelo próprio console do navegador deixa a renderização da aplicação mais lenta.
-
-
 
 ## Configurando Reactotron no projeto
 
@@ -30,7 +26,7 @@ $ yarn add reactotron-react-native
 
 Agora em uma pasta de configurações("config/"), crie o arquivo  `ReactotronConfig.js`:
 
-```react
+```jsx
 import Reactotron from 'reactotron-react-native';
 import { AsyncStorage } from 'react-native';
 
@@ -48,13 +44,11 @@ if (__DEV__) {
 
 Como você pode ver essa configuração só funciona em DEV, por motivos de segurança. O `AsyncStorage` eu importei por precaução, pois dependendo da versão que você estiver usando do React Native, a cada *refresh* na aplicação o Reactotron podre abrir uma nova conexão com o emulador.
 
-
-
 ## Troubleshooting no Android
 
 Caso o Reactotron do Desktop não consiga se conectar com o emulador/dispositivo adicione o IP do seu computador no `Reactotron.configure()`, dessa forma:
 
-```react
+```jsx
 const tron = Reactotron.configure({ host: 'seu-ip' })
 ```
 
@@ -67,11 +61,9 @@ $ adb reverse tcp:9090 tcp:9090
 $ ~/<local_pasta_Android>/Sdk/plataform-tools/adb reverse tcp:9090 tcp:9090
 ```
 
-
-
 ## Utilização
 
-```react
+```jsx
 import React, {Component} from 'react';
 import {View, Text} from 'react-native';
 
